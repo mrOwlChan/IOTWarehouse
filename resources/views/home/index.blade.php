@@ -9,7 +9,7 @@
         <title>IOTWarehouse</title>
 
         <!-- Bootstrap core CSS -->
-        <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ asset('/assets/AdminLTE/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
         <style>
             .bd-placeholder-img {
@@ -117,10 +117,7 @@
                     margin-top: 7rem;
                 }
             }
-
         </style>
-        <!-- Custom styles for this template -->
-        <link href="carousel.css" rel="stylesheet">
     </head>
     <body>  
         <header>
@@ -282,6 +279,7 @@
         </main>
 
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.min.js"></script> 
+        <script>window.jQuery || document.write('<script src="{{ asset('/assets/AdminLTE/plugins/jquery.slim.min.js') }}"><\/script>')</script>
+        <script src="{{ asset('/assets/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script> 
     </body>
 </html>
