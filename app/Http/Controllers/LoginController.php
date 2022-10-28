@@ -22,7 +22,7 @@ class LoginController extends Controller
         if (Auth::attempt($validationData)) {
             $request->session()->regenerate(); // Untuk menghindari teknik hacking session fixation
 
-            return redirect()->intended('/dashboard'); // Redirect ke url tertentu melalui authentification middleware
+            return redirect()->intended('/'); // Redirect ke url tertentu melalui authentification middleware
         }
 
         // Kembali ke halaman sebelumnya jika proses validasi data gagal

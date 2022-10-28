@@ -17,9 +17,9 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('home.index');
+});
 
 // Registrasi User
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
@@ -30,6 +30,8 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/', [HomeController::class, 'index']);
+// Home
+Route::get('/home', [HomeController::class, 'index']);
 
+// Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
