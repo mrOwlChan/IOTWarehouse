@@ -1,3 +1,11 @@
+{{-- 
+    Partials ini membutuhkan link:     
+    <link rel="stylesheet" href="{{ asset('/assets/AdminLTE/plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/AdminLTE/dist/css/adminlte.min.css') }}">
+--}}
+
+
+
 <ul class="navbar-nav ml-auto">
     <!-- Messages Dropdown Menu -->
     {{-- <li class="nav-item dropdown">
@@ -58,7 +66,7 @@
         </div>
     </li> --}}
     <!-- Notifications Dropdown Menu -->
-    <li class="nav-item dropdown">
+    <li class="nav-item dropdown pt-1">
         <a class="nav-link" data-toggle="dropdown" href="#">
             <i class="fas fa-bell"></i>
             <span class="badge badge-danger navbar-badge">15</span>
