@@ -18,12 +18,14 @@
         <link rel="stylesheet" href="{{ asset('/assets/AdminLTE/dist/css/adminlte.min.css') }}">
     </head>
     <body class="hold-transition login-page">
-        
+        {{-- Home Navbar --}}
+        @include('templates.partials.homeNavbar'){{-- /.home navbar --}}
+
         <div class="container">
             {{-- Alert Registrasi Berhasil --}}
             @if (session()->has('reg_success'))
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6 mx-auto">
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <strong>{{ session('reg_success') }}</strong>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -32,7 +34,7 @@
                         </div>    
                     </div>
                 </div>
-            @endif
+            @endif{{-- /. alert registrasi berhasil --}}
 
             {{-- Alert Gagal Login --}}
             @if (session()->has('login_falied'))
@@ -46,13 +48,14 @@
                         </div>    
                     </div>
                 </div>
-            @endif
+            @endif{{-- /. alert gagal login --}}
         </div>
 
         <div class="login-box">
             <div class="login-logo">
                 <a href="../../index2.html"><i class="fas fa-warehouse mr-2"></i><b>IOT</b>Warehouse</a>
             </div>
+
             <!-- /.login-logo -->
             <div class="card">
                 <div class="card-body login-card-body">

@@ -5,71 +5,12 @@
 --}}
 
 
-
 <ul class="navbar-nav ml-auto">
-    <!-- Messages Dropdown Menu -->
-    {{-- <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-comments"></i>
-            <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <a href="#" class="dropdown-item">
-                <!-- Message Start -->
-                <div class="media">
-                    <img src="{{ asset('assets/AdminLTE/dist/img/user1-128x128.jpg') }}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                    <div class="media-body">
-                        <h3 class="dropdown-item-title">
-                            Brad Diesel
-                            <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                        </h3>
-                        <p class="text-sm">Call me whenever you can...</p>
-                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                    </div>
-                </div>
-            <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-                <!-- Message Start -->
-                <div class="media">
-                    <img src="{{ asset('assets/AdminLTE/dist/img/user8-128x128.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                    <div class="media-body">
-                        <h3 class="dropdown-item-title">
-                            John Pierce
-                            <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                        </h3>
-                        <p class="text-sm">I got your message bro</p>
-                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                    </div>
-                </div>
-            <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-                <!-- Message Start -->
-                <div class="media">
-                    <img src="{{ asset('assets/AdminLTE/dist/img/user3-128x128.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                    <div class="media-body">
-                        <h3 class="dropdown-item-title">
-                            Nora Silvester
-                            <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                        </h3>
-                        <p class="text-sm">The subject goes here</p>
-                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                    </div>
-                </div>
-            <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-    </li> --}}
     <!-- Notifications Dropdown Menu -->
     <li class="nav-item dropdown pt-1">
         <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="fas fa-bell"></i>
-            <span class="badge badge-danger navbar-badge">15</span>
+            <i class="fas fa-bell fa-lg"></i>
+            <span class="badge badge-danger navbar-badge"><i class="fas fa-exclamation-triangle"></i></i></i></span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header">15 Notifications</span>
@@ -94,22 +35,22 @@
     </li>
     <li class="nav-item dropdown user-menu">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-            {{-- @if (auth()->user()->photo == '')
-                <img src="{{ asset('assets/images/icons/user-icon-avatar.jpg')}}" class="image img-circle" style="height:25px" alt="User Image">
-                <span class="d-none d-md-inline"> {{ auth()->user()->name}}</span>
-                
+            @if (auth()->user()->photo == '')
+                <img src="{{ asset('assets/AdminLTE/dist/img/icons/user-icon-avatar.jpg')}}" class="image img-circle mr-1" style="height:30px; width:30px" alt="User Image">
+                <span class="d-none d-md-inline"> {{ auth()->user()->name}}</span>           
             @else
-                <img src="{{ asset('storage/'. auth()->user()->photo) }}" class="image img-circle" style="height:25px" alt="User Image">
+                <img src="{{ asset('storage/'. auth()->user()->photo) }}" class="image img-circle mr-1" style="height:30px; width:30px" alt="User Image">
                 <span class="d-none d-md-inline"> {{ auth()->user()->name}}</span>
-            @endif --}}
-            <img src="{{ asset('/assets/AdminLTE/dist/img/user2-160x160.jpg') }}" class="image img-circle" style="height:25px" alt="User Image">
-            <span class="d-none d-md-inline"> {{ auth()->user()->name}}</span>
+            @endif
         </a>
         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <!-- User image -->
             <li class="user-header bg-primary">
-                {{-- <img src="{{ asset('storage/'. auth()->user()->photo) }}" class="img-circle elevation-2" alt="User Image"> --}}
-                <img src="{{ asset('/assets/AdminLTE/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+                @if (auth()->user()->photo == '')
+                    <img src="{{ asset('assets/AdminLTE/dist/img/icons/user-icon-avatar.jpg') }}" class="img-circle elevation-2" alt="User Image">
+                @else
+                    <img src="{{ asset('storage/'. auth()->user()->photo) }}" class="img-circle elevation-2" alt="User Image">
+                @endif
                 <p>
                     {{ auth()->user()->name}}
                     <small>{{ auth()->user()->position }}</small>
@@ -118,16 +59,16 @@
             <!-- Menu Body -->
             <li class="user-body">
                 <div class="row">
-                    {{-- Jika request selain url: /user --}}
-                    @if (!(Request::is('user*')))
+                    {{-- Jika request selain url: /myprofile --}}
+                    @if (!(Request::is('myprofile*')))
                         <div class="col-6 text-center">
-                            <a href="/user" class="btn btn-borderless btn-sm p-0 m-0">My Profile</a>
+                            <a href="/myprofile" class="btn btn-borderless btn-sm p-0 m-0">My Profile</a>
                         </div> 
                         <div class="col-6 text-center">
                             <a href="#" class="btn btn-borderless btn-sm p-0 m-0">Performance</a>
                         </div>
                     
-                    {{-- Jika url:/user --}}
+                    {{-- Jika url:/myprofile --}}
                     @else
                         <div class="col-6 text-center">
                             <a href="" class="btn btn-borderless btn-sm disabled p-0 m-0">My Profile</a>

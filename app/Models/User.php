@@ -21,6 +21,21 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+
+        // Attribute yang ditambahkan
+        'phone',
+        'photo',
+        'birth_date',
+        'birth_city',
+        'address_street',
+        'enable_status',
+
+        // Foreign Key
+        'city_id',
+        'company_id',
+        'job_position_id',
+        'subdistrict_id',
+        'urban_village_id',    
     ];
 
     /**
@@ -41,4 +56,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $dates = ['birth_date']; 
+
+    // Relasi dengan table
+    
 }

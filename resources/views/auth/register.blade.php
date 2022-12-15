@@ -15,6 +15,10 @@
         <link rel="stylesheet" href="{{ asset('/assets/AdminLTE/dist/css/adminlte.min.css') }}">
     </head>
     <body class="hold-transition register-page">
+        {{-- Home Navbar --}}
+        @include('templates.partials.homeNavbar'){{-- /.home navbar --}}
+
+        {{-- Register-Box --}}
         <div class="register-box">
             <div class="register-logo">
                 <a href="{{ asset('/assets/AdminLTE/index2.html') }}"><i class="fas fa-warehouse mr-2"></i><b>IOT</b>Warehouse</a>

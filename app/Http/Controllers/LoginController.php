@@ -14,7 +14,8 @@ class LoginController extends Controller
     public function authenticate(Request $request){
         // Proses validasi data input dari form login 
         $validationData = $request->validate([
-            'email'     => ['required', 'email:rfc,dns'],
+            // 'email'     => ['required', 'email:rfc,dns'], // online
+            'email'     => ['required'], // Offline
             'password'  => ['required', 'max:100', 'min:5']
         ]);
 
