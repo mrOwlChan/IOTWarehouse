@@ -57,6 +57,21 @@ class DatabaseSeeder extends Seeder
             'province_id'   => 1
         ]);// /.city
 
+        // Subdistrict
+        Subdistrict::create([
+            'enable_status'     => true,
+            'name'              => null,
+            'city_id'           => 1
+        ]);
+
+        // Urban Village
+        UrbanVillage::create([
+            'enable_status'         => true,
+            'name'                  => null,
+            'urban_village_code'    => 0,
+            'subdistrict_id'        => 1
+        ]);
+
         // Comp_Sector
         CompSector::create([
             'enable_status' => true,
@@ -100,38 +115,10 @@ class DatabaseSeeder extends Seeder
             'address_street2'   => null,
             'desc'              => null,
             'city_id'           => 1,
-            'comp_sector_id'    => 1
+            'comp_sector_id'    => 1,
+            'subdistrict_id'    => 1,
+            'urban_village_id'  => 1
         ]); // /.company
-
-        // Job Position
-        JobPosition::create([
-            'enable_status' => true,
-            'name'          => 'none',
-            'desc'          => null
-        ]); // /.job position
-
-        // Job Task
-        JobTask::create([
-            'enable_status'     => true,
-            'name'              => 'none',
-            'desc'              => null,
-            'job_position_id'   => 1
-        ]); // /.job task
-
-        // Subdistrict
-        Subdistrict::create([
-            'enable_status'     => true,
-            'name'              => 'none',
-            'city_id'           => 1
-        ]);
-
-        // Urban Village
-        UrbanVillage::create([
-            'enable_status'         => true,
-            'name'                  => 'none',
-            'urban_village_code'    => 0,
-            'subdistrict_id'        => 1
-        ]);
 
         // User
         User::create([
@@ -147,10 +134,25 @@ class DatabaseSeeder extends Seeder
             'birth_city'        => null,
             'address_street'    => null,
             'city_id'           => 1,
-            'company_id'        => 1,
-            'job_position_id'   => 1,
             'subdistrict_id'    => 1,
             'urban_village_id'  => 1
         ]);// /.user
+
+        // Job Position
+        JobPosition::create([
+            'enable_status' => true,
+            'name'          => 'none',
+            'desc'          => null,
+            'company_id'    => 1,
+            'user_id'       => 1
+        ]); // /.job position
+
+        // Job Task
+        JobTask::create([
+            'enable_status'     => true,
+            'name'              => 'none',
+            'desc'              => null,
+            'job_position_id'   => 1
+        ]); // /.job task
     }
 }

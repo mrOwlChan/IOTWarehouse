@@ -39,6 +39,12 @@ class APIController extends Controller
                 ]);
             }
 
+            // Ambil data dari Database iowarehouse table cities
+            // Data diambil dari database agar seluruh atribut row dapat diambil seluruhnya(termasuk id data)
+            $results = City::where('province_code', $results[0]['province_id'])
+                        ->where('enable_status', 1)
+                        ->get();
+
             return $results;
         }
     }

@@ -63,7 +63,7 @@ class MyProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, User $user)
+    public function edit(Request $request, User $user, $param)
     {
         // Proses validasi password
         $credential = $request->validate([
@@ -81,7 +81,7 @@ class MyProfileController extends Controller
             // Ambil data province di table provinces
             $provinces = Province::all();
 
-            return view('myprofile.edit', ['user' => $user, 'provinces' => $provinces]);
+            return view('myprofile.mybiodata_edit', ['user' => $user, 'provinces' => $provinces]);
         }
 
         // Jika password user tidak sesuai redirect ke url /myprofile
@@ -162,7 +162,7 @@ class MyProfileController extends Controller
 
         // Redirect ke halaman login dengan pesan
         return redirect('/myprofile')->with('edit_profile_success', '');
-
+ 
     }
 
     /**

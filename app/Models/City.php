@@ -23,4 +23,14 @@ class City extends Model
         // Foreign Key
         'province_id'
     ];
+
+    // Relasi dengan table provinces
+    public function province(){
+        return $this->belongsTo(Province::class);
+    } 
+
+    // Relasi dengan table users
+    public function users(){
+        return $this->hasMany(User::class);
+    }
 }

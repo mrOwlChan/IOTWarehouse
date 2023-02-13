@@ -16,4 +16,9 @@ class Subdistrict extends Model
         // Foreign Key
         'city_id'
     ];
+
+    // Relasi dengan table users
+    public function users(){
+        return $this->hasMany(User::class);
+    }
 }

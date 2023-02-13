@@ -123,7 +123,7 @@
     <body>  
         {{-- Header --}}
         @include('templates.partials.homeNavbar')
-
+        
         <main role="main">
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">

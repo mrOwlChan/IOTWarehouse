@@ -32,6 +32,38 @@
                     </li>
                 </ul>
             </li>
+            {{-- Company Menu --}}
+            <li class="nav-item has-treeview {{ (Request::is('company') || Request::is('company*')  ? 'menu-open' : '') }}">
+                <a href="#" class="nav-link {{ (Request::is('company') || Request::is('company*')  ? 'active' : '') }}">
+                    <i class="nav-icon far fa-building mr-1"></i>
+                    <p>
+                        My Company
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="company/list" class="nav-link {{ (Request::is('company') || Request::is('company/list')  ? 'active' : '') }}">
+                            <i class="{{ (Request::is('company') || Request::is('company/list')  ? 'far fa-dot-circle' : 'far fa-circle') }} nav-icon"></i>
+                            <p>Company List</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./index2.html" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Company Create</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./index3.html" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Company Movements</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            {{-- Warehouse Menu --}}
             <li class="nav-item has-treeview {{ (Request::is('warehouse') || Request::is('warehouse*')  ? 'menu-open' : '') }}">
                 <a href="#" class="nav-link {{ (Request::is('warehouse') || Request::is('warehouse*')  ? 'active' : '') }}">
                     <i class="nav-icon fas fa-warehouse"></i>

@@ -14,4 +14,9 @@ class Province extends Model
         'name',
         'province_code'
     ];
+
+    // Relasi dengan table cities
+    public function city(){
+        return $this->hasMany(City::class);
+    }
 }

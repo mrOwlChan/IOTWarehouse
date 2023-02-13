@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\APIController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\APIController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MyProfileController;
@@ -34,7 +35,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 // My Profile
 Route::get('/myprofile', [MyProfileController::class, 'index']);
-Route::post('/myprofile/{user}/edit', [MyProfileController::class, 'edit'])->middleware('auth');
+Route::post('/myprofile/{user}/{param}/edit', [MyProfileController::class, 'edit'])->middleware('auth');
 Route::patch('/myprofile/{user}/photo', [MyProfileController::class, 'updatePhoto']);
 Route::patch('/myprofile/{user}/{param}', [MyProfileController::class, 'update']);
 
@@ -43,6 +44,9 @@ Route::get('/home', [HomeController::class, 'index']);
 
 // Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+
+// Company
+Route::get('/company/list', [CompanyController::class, 'index']);
 
 // APIController untuk akses API
 Route::get('/checkpostal/{province}', [APIController::class, 'checkpostal']);

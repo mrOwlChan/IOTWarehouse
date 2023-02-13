@@ -17,4 +17,9 @@ class UrbanVillage extends Model
         // Foreign Key
         'subdistrict_id'
     ];
+
+    // Relasi dengan table users
+    public function users(){
+        return $this->hasMany(User::class);
+    }
 }

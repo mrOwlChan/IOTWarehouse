@@ -46,7 +46,7 @@
                 <div class="card-header p-0 ">
                     <ul class="nav nav-pills mr-auto">
                         <li class="nav-item"><a class="nav-link active" href="#biodata" data-toggle="tab">Biodata</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#jobdesk" data-toggle="tab">Job Desk</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#jobdesk" data-toggle="tab">Employment</a></li>
                         <li class="nav-item"><a class="nav-link" href="#message" data-toggle="tab">Messages</a></li>
                         <li class="nav-item"><a class="nav-link" href="#message" data-toggle="tab">Settings</a></li>
                     </ul>
@@ -55,117 +55,12 @@
                     <div class="tab-content">
                         {{-- Biodata Tab --}}
                         <div class="active tab-pane" id="biodata">
-                            <div class="row">
-                                {{-- Kolom Kiri --}}
-                                <div class="col-md-5 pl-3">
-                                    <strong><i class="fas fa-user mr-1"></i> Name</strong>
-                                    <p class="text-muted">
-                                        {{ $user->name }}
-                                    </p>
-
-                                    <strong><i class="fas fa-envelope mr-1"></i> Email</strong>
-                                    <p class="text-muted">
-                                        {{ $user->email }}
-                                    </p>
-        
-                                    <strong><i class="fas fa-phone-square-alt mr-1"></i> Phone</strong>
-                                    <p class="text-muted text-danger">
-                                        @if ($user->phone == '')
-                                            <span>
-                                                <a href="" type="button" class="text-danger" data-toggle="modal" data-target="#editBiodata">
-                                                    Nomor telepon belum terisi
-                                                    <i class="fas fa-exclamation-circle ml-1"></i>   
-                                                </a>
-                                            </span>
-                                        @else
-                                            {{ $user->phone}}
-                                        @endif
-                                    </p>
-
-                                    <strong><i class="fas fa-map-marked-alt mr-1"></i> Birth City / <i class="fas fa-birthday-cake mx-1"></i> Birth Date</strong>
-                                    <p class="text-muted text-danger">
-                                        <span>
-                                            @if ($user->birth_city == '')
-                                                <span>
-                                                    <a href="" type="button" class="text-danger" data-toggle="modal" data-target="#editBiodata">
-                                                        Kota kelahiran belum terisi
-                                                        <i class="fas fa-exclamation-circle ml-1"></i>   
-                                                    </a>
-                                                </span>
-                                            @else
-                                                {{ $user->birth_city}}
-                                            @endif
-                                        </span>
-                                        <span> / </span>
-                                        <span>
-                                            @if ($user->birth_date == '')
-                                                <span>
-                                                    <a href="" class="text-danger" data-toggle="modal" data-target="#editBiodata">
-                                                        Tanggal lahir belum terisi
-                                                        <i class="fas fa-exclamation-circle ml-1"></i>   
-                                                    </a>
-                                                </span>
-                                            @else
-                                                {{ $user->birth_date->format('d-M-Y')}}
-                                            @endif
-                                        </span>
-                                    </p>
-                                </div>{{-- /.kolom kiri --}}
-                               
-                                <div class="col-md-1 mr-3" style="border-right: 1px grey solid"></div>
-                                
-                                {{-- Kolom Kanan --}}
-                                <div class="col-md-5">
-                                    <strong><i class="fas fa-map-marked-alt mr-1"></i> Birth City / <i class="fas fa-birthday-cake mx-1"></i> Birth Date</strong>
-                                    <p class="text-muted text-danger">
-                                        <span>
-                                            @if ($user->birth_city == '')
-                                                <span>
-                                                    <a href="" type="button" class="text-danger" data-toggle="modal" data-target="#editBiodata">
-                                                        Kota kelahiran belum terisi
-                                                        <i class="fas fa-exclamation-circle ml-1"></i>   
-                                                    </a>
-                                                </span>
-                                            @else
-                                                {{ $user->birth_city}}
-                                            @endif
-                                        </span>
-                                        <span> / </span>
-                                        <span>
-                                            @if ($user->birth_date == '')
-                                                <span>
-                                                    <a href="" class="text-danger" data-toggle="modal" data-target="#editBiodata">
-                                                        Tanggal lahir belum terisi
-                                                        <i class="fas fa-exclamation-circle ml-1"></i>   
-                                                    </a>
-                                                </span>
-                                            @else
-                                                {{ $user->birth_date->format('d-M-Y')}}
-                                            @endif
-                                        </span>
-                                    </p>
-
-                                    <strong><i class="fas fa-map-marked-alt mr-1"></i> Address</strong>
-                                    <p class="text-muted text-danger">
-                                        @if ($user->birth_city == '')
-                                            <span>
-                                                <a href=""  class="text-danger" data-toggle="modal" data-target="#editBiodata">
-                                                    Tempat tinggal belum terisi
-                                                    <i class="fas fa-exclamation-circle ml-1"></i>   
-                                                </a>
-                                            </span>
-                                        @else
-                                            {{ $user->address_street}}
-                                        @endif
-                                    </p>
-
-                                </div>{{-- /.kolom kanan --}}
-                            </div>
+                            @include('myprofile.mybiodata_index')
                         </div>{{-- /.biodata tab --}}
 
                         {{-- Job Desk Tab --}}
                         <div class="tab-pane" id="jobdesk">
-                            
+                            @include('myprofile.employment_index')
                         </div>{{-- /.job desk tab --}}
 
                         {{-- Message Tab --}}
@@ -252,7 +147,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="/myprofile/{{ $user->id }}/edit" method="post">
+                <form action="/myprofile/{{ $user->id }}/biodata/edit" method="post">
                     @method('post')
                     @csrf
                     <div class="modal-body">
@@ -326,47 +221,6 @@
         </div>
     </div>
 
-    <script>
-        // Preview photo sebelum di-Submit di Modal Edit Photo Profile
-        function previewImage(){
-            const image = document.querySelector("#photo");
-            const imgPreview = document.querySelector('.img-preview');
-
-            imgPreview.style.display ='block';
-
-            const oFReader = new FileReader();
-            oFReader.readAsDataURL(image.files[0]);
-
-            oFReader.onload = function(oFREvent){
-                imgPreview.src = oFREvent.target.result;
-            }
-        }
-
-        // preview password
-        $(document).ready(function(){
-            $('.seePasswordButton').on("click", function(){
-                // Dapatkan nilai attribute elemet dengan selector '#password'
-                var seePassword = document.querySelector('.seePassword');
-                var seePasswordButton = document.querySelector('.seePasswordButton');
-                var typeInput = seePassword.getAttribute("type");
-                
-                // Tambahkan item class active sebagai indikator tombol telah diklik
-                // seePasswordButton.classList.toggle('active');
-
-                // Jika nilainya adalah 'password', maka rubah menjadi 'text'
-                if(typeInput == 'password'){
-                    $('.seePassword').attr('type', 'text');
-                    seePasswordButton.style.backgroundColor = 'red';
-                }
-
-                // Jika nilainya adalah 'password', maka rubah menjadi 'text'
-                if(typeInput == 'text'){
-                    $('.seePassword').attr('type', 'password');
-                    seePasswordButton.style.backgroundColor = 'transparent';
-                }
-            });
-        });
-    </script>
 @endsection
 
 {{-- Tambahan Link Library ke lain (umumnya javascript library)--}}

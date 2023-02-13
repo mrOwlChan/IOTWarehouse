@@ -57,8 +57,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // Format tanggal
     protected $dates = ['birth_date']; 
-
-    // Relasi dengan table
     
+    // Relasi dengan table cities
+    public function city(){
+        return $this->belongsTo(City::class);
+    }
+
+    // Relasi dengan table subdistricts
+    public function subdistrict(){
+        return $this->belongsTo(Subdistrict::class);
+    }
+
+    // Relasi dengan table urban_villages
+    public function urban_village(){
+        return $this->belongsTo(UrbanVillage::class);
+    }
 }
