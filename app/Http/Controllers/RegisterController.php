@@ -58,6 +58,8 @@ class RegisterController extends Controller
 
         // Redirect ke halaman login dengan pesan
         return redirect('/login')->with('reg_success', 'Proses registrasi akun Anda sukses. Silahkan untuk login.');
+
+        // return $request;
     }
 
     /**

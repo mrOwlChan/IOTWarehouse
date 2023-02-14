@@ -38,6 +38,13 @@ class User extends Authenticatable
         'urban_village_id',    
     ];
 
+    // Attribute yang memiliki nilai default
+    protected $attributes = [
+        'city_id'           => 1,
+        'subdistrict_id'    => 1,
+        'urban_village_id'  => 1
+    ];
+
     /**
      * The attributes that should be hidden for serialization.
      *

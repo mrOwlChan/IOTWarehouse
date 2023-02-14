@@ -173,7 +173,8 @@ class MyProfileController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Menghapus Foto
+        
     }
 
     public function updatePhoto(Request $request, User $user){
@@ -200,5 +201,6 @@ class MyProfileController extends Controller
         ]);
 
         return redirect('/myprofile');
+        // return dd($request);
     }
 }
