@@ -201,6 +201,5 @@ class MyProfileController extends Controller
         ]);
 
         return redirect('/myprofile');
-        // return dd($request);
     }
 }
