@@ -35,8 +35,8 @@ class CreateUsersTable extends Migration
             $table->foreignId('city_id')->references('id')->on('cities');
             $table->foreignId('subdistrict_id')->references('id')->on('subdistricts');
             $table->foreignId('urban_village_id')->references('id')->on('urban_villages');
-            // $table->foreignId('company_id')->references('id')->on('companies');
-            // $table->foreignId('job_position_id')->references('id')->on('job_positions');
+            $table->foreignId('company_id')->references('id')->on('companies');
+            $table->foreignId('job_position_id')->references('id')->on('job_positions');
 
         });
     }
@@ -51,6 +51,6 @@ class CreateUsersTable extends Migration
         Schema::dropIfExists('users');
 
         // Hapus direktori users
-        Storage::deleteDirectory('users');
+        Storage::deleteDirectory('/users');
     }
 }

@@ -14,4 +14,9 @@ class CompSector extends Model
         'name',
         'desc'
     ];
+
+    // Relasi dengan table company_sector
+    public function company(){
+        return $this->hasMany(Company::class);
+    }
 }

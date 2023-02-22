@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
         Province::create([
             'enable_status' => true,
             'province_code' => 0,
-            'name'          => null
+            'name'          => "none"
         ]);
 
         // Simpan data $province ke table provinces
@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
         // City
         City::create([
             'enable_status' => true,
-            'name'          => null,
+            'name'          => 'none',
             'type'          => 'kota',
             'postal_code'   => null,
             'province_code' => 0,
@@ -60,22 +60,22 @@ class DatabaseSeeder extends Seeder
         // Subdistrict
         Subdistrict::create([
             'enable_status'     => true,
-            'name'              => null,
+            'name'              => "none",
             'city_id'           => 1
         ]);
 
         // Urban Village
         UrbanVillage::create([
             'enable_status'         => true,
-            'name'                  => null,
-            'urban_village_code'    => 0,
+            'name'                  => "none",
+            'urban_village_code'    => "none",
             'subdistrict_id'        => 1
         ]);
 
         // Comp_Sector
         CompSector::create([
             'enable_status' => true,
-            'name'          => 'none',
+            'name'          => "none",
             'desc'          => 'none'
         ]);
 
@@ -106,19 +106,32 @@ class DatabaseSeeder extends Seeder
         // Company
         Company::create([
             'enable_status'     => true,
-            'name'              => 'none',
-            'phone1'            => null,
-            'phone2'            => null,
-            'email1'            => 'none',
-            'email2'            => 'none',
-            'address_street1'   => null,
-            'address_street2'   => null,
+            'name'              => "You not registered in any Company",
+            'phone'             => 'none',
+            'email'             => 'none',
+            'address_street'    => null,
             'desc'              => null,
             'city_id'           => 1,
             'comp_sector_id'    => 1,
             'subdistrict_id'    => 1,
             'urban_village_id'  => 1
         ]); // /.company
+
+        // Job Position
+        JobPosition::create([
+            'enable_status' => true,
+            'name'          => "You don't have position yet in Your company",
+            'desc'          => null
+        ]); // /.job position
+
+        // Job Task
+        JobTask::create([
+            'enable_status'     => true,
+            'name'              => "You don't have task",
+            'desc'              => null,
+            'job_position_id'   => 1
+        ]); // /.job task
+
 
         // User
         User::create([
@@ -135,24 +148,9 @@ class DatabaseSeeder extends Seeder
             'address_street'    => null,
             'city_id'           => 1,
             'subdistrict_id'    => 1,
-            'urban_village_id'  => 1
+            'urban_village_id'  => 1,
+            'job_position_id'   => 1,
+            'company_id'        => 1
         ]);// /.user
-
-        // Job Position
-        JobPosition::create([
-            'enable_status' => true,
-            'name'          => 'none',
-            'desc'          => null,
-            'company_id'    => 1,
-            'user_id'       => 1
-        ]); // /.job position
-
-        // Job Task
-        JobTask::create([
-            'enable_status'     => true,
-            'name'              => 'none',
-            'desc'              => null,
-            'job_position_id'   => 1
-        ]); // /.job task
     }
 }

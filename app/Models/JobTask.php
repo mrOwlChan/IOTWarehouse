@@ -17,4 +17,9 @@ class JobTask extends Model
         // Foreign key
         'job_position_id'
     ];
+
+    // Relasi dengan table job_positions
+    public function job_position(){
+        return $this->belongsTo(JobPosition::class);
+    }
 }

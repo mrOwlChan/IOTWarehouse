@@ -20,13 +20,11 @@ class CreateCompaniesTable extends Migration
             // 
             $table->boolean('enable_status')->default(true);
             $table->string('name')->nullable();
-            $table->string('phone1')->nullable();
-            $table->string('phone2')->nullable();
-            $table->string('email1')->unique();
-            $table->string('email2')->unique();
-            $table->string('address_street1')->nullable();
-            $table->string('address_street2')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->unique();
+            $table->string('address_street')->nullable();
             $table->text('desc')->nullable();
+            $table->string('logo')->nullable();
 
             // Foreign Key
             $table->foreignId('city_id')->references('id')->on('cities');

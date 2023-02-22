@@ -22,4 +22,10 @@ class UrbanVillage extends Model
     public function users(){
         return $this->hasMany(User::class);
     }
+    
+    // Relasi dengan table companies
+    public function company(){
+        return $this->hasMany(Company::class);
+    }
+
 }

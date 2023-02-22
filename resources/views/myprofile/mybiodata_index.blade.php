@@ -59,13 +59,13 @@
     
     {{-- Kolom Kanan --}}
     <div class="col-md-5">
-        <strong><i class="fas fa-map-marked-alt mr-1"></i> Settle Province / District</strong>
+        <strong><i class="fas fa-map-marked-alt mr-1"></i> Settle Province / City</strong>
         <p class="text-muted text-danger">
             <span>
-                @if ($user->birth_city == '')
+                @if ($user->city->province->id == 1)
                     <span>
                         <a href="" type="button" class="text-danger" data-toggle="modal" data-target="#editBiodata">
-                            Settle province not yet have filled
+                            {{ $user->city->province->name}}
                             <i class="fas fa-exclamation-circle ml-1"></i>   
                         </a>
                     </span>
@@ -75,10 +75,10 @@
             </span>
             <span> / </span>
             <span>
-                @if ($user->birth_date == '')
+                @if ($user->city->id == 1)
                     <span>
                         <a href="" class="text-danger" data-toggle="modal" data-target="#editBiodata">
-                            Settle City not yet have filled
+                            {{ $user->city->name}} 
                             <i class="fas fa-exclamation-circle ml-1"></i>   
                         </a>
                     </span>
@@ -91,10 +91,10 @@
         <strong><i class="fas fa-map-marked-alt mr-1"></i> Settle Subdistrict / Urban Village</strong>
         <p class="text-muted text-danger">
             <span>
-                @if ($user->birth_city == '')
+                @if ( $user->subdistrict->id == 1 )
                     <span>
                         <a href="" type="button" class="text-danger" data-toggle="modal" data-target="#editBiodata">
-                            Settle subdistrict not yet have filled
+                            {{ $user->subdistrict->name}}
                             <i class="fas fa-exclamation-circle ml-1"></i>   
                         </a>
                     </span>
@@ -104,10 +104,10 @@
             </span>
             <span> / </span>
             <span>
-                @if ($user->birth_date == '')
+                @if ($user->urban_village->id == 1)
                     <span>
                         <a href="" class="text-danger" data-toggle="modal" data-target="#editBiodata">
-                            Settle urban villages not yet have filled
+                            {{ $user->urban_village->name }}
                             <i class="fas fa-exclamation-circle ml-1"></i>   
                         </a>
                     </span>
@@ -119,10 +119,10 @@
 
         <strong><i class="fas fa-mail-bulk mr-1"></i> Postal Code</strong>
         <p class="text-muted text-danger">
-            @if ($user->birth_city == '')
+            @if ( $user->urban_village->id == 1 )
                 <span>
                     <a href=""  class="text-danger" data-toggle="modal" data-target="#editBiodata">
-                        Postal not yet have filled
+                        {{ $user->urban_village->urban_village_code }}
                         <i class="fas fa-exclamation-circle ml-1"></i>   
                     </a>
                 </span>
@@ -133,7 +133,7 @@
 
         <strong><i class="fas fa-map-marked-alt mr-1"></i> Address Street</strong>
         <p class="text-muted text-danger">
-            @if ($user->birth_city == '')
+            @if ($user->address_street == '')
                 <span>
                     <a href=""  class="text-danger" data-toggle="modal" data-target="#editBiodata">
                         Settle address street not yet have filled
@@ -147,6 +147,7 @@
 
     </div>{{-- /.kolom kanan --}}
 </div>
+
 {{-- Edit Button --}}
 <div class="row mt-5">
     <div class="col-md-12 text-right" >
@@ -154,44 +155,49 @@
     </div>
 </div>
 
-<script>
-    // Preview photo sebelum di-Submit di Modal Edit Photo Profile
-    function previewImage(){
-        const image = document.querySelector("#photo");
-        const imgPreview = document.querySelector('.img-preview');
+{{-- Modal Edit Biodata --}}
+<div class="modal fade" id="editBiodata" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-user-edit mr-1"></i>Edit Profile Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/myaccount/myprofile/{{ $user->id }}/edit" method="post">
+                @method('post')
+                @csrf
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>
+                                Password user dibutuhkan untuk melanjutkan ke form edit biodata profile untuk mengubah atau melengkapi data Anda.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7 offset-md-3">
+                            <label for="level"><i class="fas fa-key"></i> Password</label>
+                            <div class="form-group input-group">
+                                <input type="password" class="form-control form-control-sm seePassword" name="passwordEditProfile">
+                                <div class="input-group-append">
+                                    <button type="button" class="btn btn-outline-primary btn-sm seePasswordButton"><i class="fas fa-eye"></i></button>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="far fa-window-close mr-1"></i>Cancel</button>
+                    <button type="submit" class="btn btn-warning btn-sm"><i class="fas fa-edit mr-1"></i>Edit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
-        imgPreview.style.display ='block';
 
-        const oFReader = new FileReader();
-        oFReader.readAsDataURL(image.files[0]);
 
-        oFReader.onload = function(oFREvent){
-            imgPreview.src = oFREvent.target.result;
-        }
-    }
 
-    // preview password
-    $(document).ready(function(){
-        $('.seePasswordButton').on("click", function(){
-            // Dapatkan nilai attribute elemet dengan selector '#password'
-            var seePassword = document.querySelector('.seePassword');
-            var seePasswordButton = document.querySelector('.seePasswordButton');
-            var typeInput = seePassword.getAttribute("type");
-            
-            // Tambahkan item class active sebagai indikator tombol telah diklik
-            // seePasswordButton.classList.toggle('active');
 
-            // Jika nilainya adalah 'password', maka rubah menjadi 'text'
-            if(typeInput == 'password'){
-                $('.seePassword').attr('type', 'text');
-                seePasswordButton.style.backgroundColor = 'salmon';
-            }
-
-            // Jika nilainya adalah 'password', maka rubah menjadi 'text'
-            if(typeInput == 'text'){
-                $('.seePassword').attr('type', 'password');
-                seePasswordButton.style.backgroundColor = 'transparent';
-            }
-        });
-    });
-</script>

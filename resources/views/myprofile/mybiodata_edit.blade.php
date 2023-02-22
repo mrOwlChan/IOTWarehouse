@@ -45,7 +45,7 @@
                 @endif
                 <div class="card-body">
                     <div class="active tab-pane" id="biodata">
-                        <form action="/myprofile/{{ $user->id }}/biodata" method="post">
+                        <form action="/myaccount/myprofile/{{ $user->id }}" method="post">
                             <div class="row">
                                 @csrf
                                 @method('patch')
@@ -173,7 +173,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="/myprofile/{{ $user->id }}/photo" method="post" enctype="multipart/form-data">
+                <form action="/myaccount/myprofile/{{ $user->id }}/photo" method="post" enctype="multipart/form-data">
                     @method('patch')
                     @csrf
                     <div class="modal-body">  
@@ -295,13 +295,6 @@
                 });
                 
             });
-
-            // 
-            $('#city').change(function(){
-                alert($('#city').val());
-            });
-
-            // 
 
         });
 

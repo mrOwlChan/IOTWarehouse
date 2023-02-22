@@ -33,11 +33,11 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-// My Profile
-Route::get('/myprofile', [MyProfileController::class, 'index']);
-Route::post('/myprofile/{user}/{param}/edit', [MyProfileController::class, 'edit'])->middleware('auth');
-Route::patch('/myprofile/{user}/photo', [MyProfileController::class, 'updatePhoto']);
-Route::patch('/myprofile/{user}/{param}', [MyProfileController::class, 'update']);
+// My Profile Biodata
+Route::get('/myaccount/myprofile', [MyProfileController::class, 'index']);
+Route::post('/myaccount/myprofile/{user}/edit', [MyProfileController::class, 'edit'])->middleware('auth');
+Route::patch('/myaccount/myprofile/{user}/photo', [MyProfileController::class, 'updatePhoto']);
+Route::patch('/myaccount/myprofile/{user}', [MyProfileController::class, 'update']);
 
 // Home
 Route::get('/home', [HomeController::class, 'index']);

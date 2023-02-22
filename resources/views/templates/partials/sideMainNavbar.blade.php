@@ -32,9 +32,10 @@
                     </li>
                 </ul>
             </li>
+
             {{-- Company Menu --}}
-            <li class="nav-item has-treeview {{ (Request::is('company') || Request::is('company*')  ? 'menu-open' : '') }}">
-                <a href="#" class="nav-link {{ (Request::is('company') || Request::is('company*')  ? 'active' : '') }}">
+            <li class="nav-item has-treeview {{ (Request::is('mycompany') || Request::is('mycompany*')  ? 'menu-open' : '') }}">
+                <a href="#" class="nav-link {{ (Request::is('mycompany') || Request::is('mycompany*')  ? 'active' : '') }}">
                     <i class="nav-icon far fa-building mr-1"></i>
                     <p>
                         My Company
@@ -93,18 +94,20 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item has-treeview {{ (Request::is('users') || Request::is('users*')  ? 'menu-open' : '') }}">
-                <a href="#" class="nav-link {{ (Request::is('users') || Request::is('users*')  ? 'active' : '') }}">
+
+            {{-- Users --}}
+            <li class="nav-item has-treeview {{ (Request::is('myaccount') || Request::is('myaccount*')  ? 'menu-open' : '') }}">
+                <a href="#" class="nav-link {{ (Request::is('myaccount') || Request::is('myaccount*')  ? 'active' : '') }}">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
-                        Users
+                        My Account
                         <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="/myprofile" class="nav-link {{ (Request::is('users') || Request::is('users*')  ? 'active' : '') }}">
-                            <i class="{{ (Request::is('users') || Request::is('users*')  ? 'far fa-dot-circle' : 'far fa-circle') }} nav-icon"></i>
+                        <a href="/myaccount/myprofile" class="nav-link {{ (Request::is('myaccount/myprofile') || Request::is('myaccount*')  ? 'active' : '') }}">
+                            <i class="{{ (Request::is('myaccount/myprofile') || Request::is('myaccount*')  ? 'far fa-dot-circle' : 'far fa-circle') }} nav-icon"></i>
                             <p>My Profile</p>
                         </a>
                     </li>

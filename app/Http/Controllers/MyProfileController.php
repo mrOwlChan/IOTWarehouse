@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\User;
 use App\Models\Province;
 use App\Models\Subdistrict;
@@ -63,7 +64,7 @@ class MyProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, User $user, $param)
+    public function edit(Request $request, User $user)
     {
         // Proses validasi password
         $credential = $request->validate([
@@ -81,11 +82,12 @@ class MyProfileController extends Controller
             // Ambil data province di table provinces
             $provinces = Province::all();
 
-            return view('myprofile.mybiodata_edit', ['user' => $user, 'provinces' => $provinces]);
+            return view('myprofile.mybiodata_edit', ['user' => $user, 'provinces' => $provinces]);  
         }
 
         // Jika password user tidak sesuai redirect ke url /myprofile
         return redirect('/myprofile');
+
     }
 
     /**
@@ -95,7 +97,7 @@ class MyProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user, $param)
+    public function update(Request $request, User $user)
     {
         // Proses validasi data
         $validatedData = $request->validate([

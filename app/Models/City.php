@@ -29,8 +29,19 @@ class City extends Model
         return $this->belongsTo(Province::class);
     } 
 
+    // Relasi dengan table subdistricts
+    public function subdistrict(){
+        return $this->belongsTo(Subdistrict::class);
+    }
+
     // Relasi dengan table users
     public function users(){
         return $this->hasMany(User::class);
     }
+    
+    // Relasi dengan table companies
+    public function company(){
+        return $this->hasMany(Company::class);
+    }
+
 }

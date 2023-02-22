@@ -81,4 +81,14 @@ class User extends Authenticatable
     public function urban_village(){
         return $this->belongsTo(UrbanVillage::class);
     }
+
+    // Relasi dengan table job_positions
+    public function job_position(){
+        return $this->belongsTo(JobPosition::class);
+    }
+
+    // Relasi dengan table companies
+    public function company(){
+        return $this->belongsTo(Company::class);
+    }
 }

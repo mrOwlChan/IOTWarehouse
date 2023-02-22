@@ -23,8 +23,8 @@ class CreateJobPositionsTable extends Migration
             $table->string('desc')->nullable();
 
             // Foreign Key
-            $table->foreignId('company_id')->references('id')->on('companies');
-            $table->foreignId('user_id')->references('id')->on('users');
+            // $table->foreignId('company_id')->references('id')->on('companies');
+
         });
     }
 
