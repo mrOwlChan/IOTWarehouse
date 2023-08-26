@@ -62,7 +62,7 @@
                     {{-- Jika request selain url: /myprofile --}}
                     @if (!(Request::is('myprofile*')))
                         <div class="col-6 text-center">
-                            <a href="/myprofile" class="btn btn-borderless btn-sm p-0 m-0">My Profile</a>
+                            <a href="/myaccount/myprofile" class="btn btn-borderless btn-sm p-0 m-0">My Profile</a>
                         </div> 
                         <div class="col-6 text-center">
                             <a href="#" class="btn btn-borderless btn-sm p-0 m-0">Performance</a>

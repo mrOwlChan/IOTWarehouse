@@ -86,7 +86,7 @@ class MyProfileController extends Controller
         }
 
         // Jika password user tidak sesuai redirect ke url /myprofile
-        return redirect('/myprofile');
+        return redirect('/myaccount/myprofile');
 
     }
 
@@ -163,7 +163,7 @@ class MyProfileController extends Controller
                                             ]);
 
         // Redirect ke halaman login dengan pesan
-        return redirect('/myprofile')->with('edit_profile_success', '');
+        return redirect('/myaccount/myprofile')->with('edit_profile_success', '');
  
     }
 
